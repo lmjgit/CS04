@@ -1,0 +1,70 @@
+C#企业级开发技术练习4答题卡
+
+班级：     信管一班		
+姓名：     李明杰
+学号：     20190307130
+
+注：请将答案放置在序号下方。*/
+
+（一）
+ static BigInteger TotalMul(long begin,long ocer)
+        {
+            BigInteger r=1;
+            for(long i=begin;i<=ocer;i++)
+            {
+                r *= i;
+                i++;
+                i++;
+            }
+            return r;
+        }
+        static void Main(string[] args)
+        {
+            Func<long, long,BigInteger> TotalM = TotalMul;
+            Console.WriteLine(TotalM(11,23 ));
+        }
+    }
+}
+
+
+（二）
+namespace sj4_2
+{
+    delegate decimal TotalCalc(decimal[] x);
+    class Program
+    {
+        static void TotalC(string strC,decimal[] a,TotalCalc funC)
+        {
+            Console.WriteLine($"{ strC}:{funC(a)}");
+        }
+        static void Main(string[] args)
+        {
+            decimal[] scs = { 80, 72, 91, 65 };
+            TotalC("最大值", scs, delegate (decimal[] a)
+            {
+                return a.Max();
+            });
+            TotalC("最小值", scs, delegate (decimal[] a)
+            {
+                return a.Min();
+            });
+
+        }
+    }
+}
+
+
+
+（三）
+static void Main(string[] args)
+        {
+            Action<DateTime, int> DateChange = (t, d) =>
+               Console.WriteLine($"{t.Date.ToString()}" +
+               $"{d}天之前是{t.AddDays(-d).Date.ToString()}");
+            DateChange(new DateTime(2020, 10, 2), 5);
+            
+
+        }
+
+
+（四）
